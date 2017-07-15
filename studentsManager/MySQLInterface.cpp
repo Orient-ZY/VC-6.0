@@ -1,7 +1,8 @@
 #include "MySQLInterface.h"  
   
   
-//构造函数 初始化各个变量和数据  
+// 构造函数 初始化各个变量和数据  
+// -----------------------------
 MySQLInterface::MySQLInterface():  
     errorNum(0),errorInfo("ok")  
 {  
@@ -15,7 +16,8 @@ MySQLInterface::~MySQLInterface()
   
 }  
   
-//连接MySQL  
+// 连接MySQL  
+// ---------
 bool MySQLInterface::connectMySQL(char* server, char* username, char* password, char* database,int port)  
 {  
     if(mysql_real_connect(&mysqlInstance,server,username,password,database,port,0,0) != NULL)  
@@ -29,7 +31,9 @@ bool MySQLInterface::connectMySQL(char* server, char* username, char* password, 
 	}
     return false;  
 }  
-//判断数据库是否存在，不存在则创建数据库，并打开  
+
+// 判断数据库是否存在，不存在则创建数据库，并打开
+// ----------------------------------------------  
 bool MySQLInterface::createDatabase(std::string& dbname)  
 {  
     std::string queryStr = "create database if not exists ";  
@@ -47,7 +51,9 @@ bool MySQLInterface::createDatabase(std::string& dbname)
     errorIntoMySQL();  
     return false;  
 }  
-//判断数据库中是否存在相应表，不存在则创建表  
+
+// 判断数据库中是否存在相应表，不存在则创建表  
+// ------------------------------------------
 bool MySQLInterface::createdbTable(const std::string& query)  
 {  
     if (0 == mysql_query(&mysqlInstance,query.c_str()))  
@@ -58,7 +64,8 @@ bool MySQLInterface::createdbTable(const std::string& query)
     return false;  
 }  
   
-//写入数据  
+// 写入数据  
+// --------
 bool MySQLInterface::writeDataToDB(string queryStr)  
 {  
     if(0==mysql_query(&mysqlInstance,queryStr.c_str()))
@@ -72,7 +79,9 @@ bool MySQLInterface::writeDataToDB(string queryStr)
 		return false; 
 	}
 }  
-//读取数据  
+
+// 读取数据  
+// --------
 bool MySQLInterface::getDatafromDB(string queryStr, std::vector<std::vector<std::string> >& data)  
 {  
     if(0!=mysql_query(&mysqlInstance,queryStr.c_str()))  
@@ -114,14 +123,16 @@ bool MySQLInterface::getDatafromDB(string queryStr, std::vector<std::vector<std:
     return true;  
 }  
   
-//错误信息  
+// 错误信息  
+// --------
 void MySQLInterface::errorIntoMySQL()  
 {  
     errorNum=mysql_errno(&mysqlInstance);  
     errorInfo=mysql_error(&mysqlInstance);  
 }  
   
-//断开连接  
+// 断开连接 
+// -------- 
 void MySQLInterface::closeMySQL()  
 {  
     mysql_close(&mysqlInstance);  

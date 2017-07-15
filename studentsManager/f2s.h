@@ -18,6 +18,9 @@ public:
 	f2s();
 	virtual ~f2s();
 
+
+	// float转为string类型函数
+	// -----------------------
 	static std::string toString(float val)
 	{
 		char buf[200];

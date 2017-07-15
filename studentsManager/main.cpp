@@ -25,33 +25,9 @@ int main()
 	mysqlInterface.closeMySQL();
 
 	*/
-/*
-	std::string id = "150105";
-	std::string name = "王启";
-	std::string age = "13";
-	std::string gender = "男";
-	std::string grade = "一1班";
-	float tchinese = 82;
-	float tmath = 71;
-	float tenglish = 90;
-	float tsum = tchinese + tmath + tenglish;
-	std::string chinese = f2s::toString(tchinese);
-	std::string math = f2s::toString(tmath);
-	std::string english = f2s::toString(tenglish);
-	std::string sum = f2s::toString(tsum);
 
 
-	MySQLInterface mysqlInterface;
-	mysqlInterface.connectMySQL("localhost", "root", "zyzzz", "student", 3306);
-	std::string sql = "insert into junior (id, name, age, gender, grade, chinese, math, english) values ('"+id+"', '"+name+"', '"+age+"', '"+gender+"', '"+grade+"', '"+chinese+"', '"+math+"', '"+english+"');";
-
-	mysqlInterface.writeDataToDB(sql);
-
-	mysqlInterface.closeMySQL();
-
-	exit(0);
-*/
-
+	// 入口程序
 	allStudents all;
 	all.showMenu();
 

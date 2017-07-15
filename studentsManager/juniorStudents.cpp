@@ -18,9 +18,11 @@ juniorStudents::~juniorStudents()
 
 }
 
+// 显示小学成绩管理系统的菜单
+// --------------------------
 void juniorStudents::showMenu()
 {
-//	system("cls");
+
 	std::cout<<"********************************************************************************"<<std::endl;  
 	std::cout<<"〓〓〓〓〓〓〓〓〓〓  ☆   小 学 生 成 绩 管 理 系  统  ☆  〓〓〓〓〓〓〓〓〓〓"<<std::endl;  
 	std::cout<<"〓〓〓〓〓〓〓★★★★★         ★★★★★★★         ★★★★★〓〓〓〓〓〓〓"<<std::endl;  
@@ -88,6 +90,8 @@ void juniorStudents::showMenu()
 	}
 }
 
+// 添加学生成绩
+// ------------
 void juniorStudents::add()
 {
 	std::cout << "学号：";
@@ -124,6 +128,8 @@ void juniorStudents::add()
 
 }
 
+// 查询学生成绩（有学号查询和姓名查询两种方式）
+// -------------------------------------------
 void juniorStudents::find()
 {
 	std::cout << "输入需要查找的学生学号或姓名：";
@@ -148,6 +154,8 @@ void juniorStudents::find()
 	mysqlInterface.closeMySQL();
 }
 
+// 显示所有学生成绩 
+// ----------------
 void juniorStudents::show()
 {
 	MySQLInterface mysqlInterface;
@@ -170,6 +178,8 @@ void juniorStudents::show()
 
 }
 
+// 修改学生成绩
+// ------------
 void juniorStudents::modify()
 {
 	std::cout << "需要修改的学生学号：";
@@ -207,6 +217,8 @@ void juniorStudents::modify()
 
 }
 
+// 删除学生成绩（必须学号与姓名对应，防止误删）
+// -------------------------------------------
 void juniorStudents::remove()
 {
 	std::cout << "需要删除的学生学号：";
@@ -224,6 +236,8 @@ void juniorStudents::remove()
 	mysqlInterface.closeMySQL();
 }
 
+// 按照要求进行排序
+// ----------------
 void juniorStudents::sort()
 {
 	std::string item;
