@@ -14,7 +14,7 @@
 ## 安装数据库注意事项
 
 
-![](https://github.com/Orient-ZY/OpenGL-Learning/raw/master/img/install.png)
+![](https://github.com/Orient-ZY/VC-6.0/raw/master/studentsManager/img/install.png)
 
 上图安装的时候务必选择 `MySQL Servers` 中的 *x86* 版本，不然用VC++6.0会出现莫名其妙的BUG。
 

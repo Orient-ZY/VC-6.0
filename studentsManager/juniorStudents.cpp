@@ -111,19 +111,25 @@ void juniorStudents::add()
 	std::cout << "英语成绩：";
 	std::cin >> juniorStudents::english;
 
+	// 总成绩
 	juniorStudents::sum = juniorStudents::chinese + juniorStudents::math + juniorStudents::english;
+	
+	// 将float成绩转换为string格式
+	// ---------------------------
 	string chinese = f2s::toString(juniorStudents::chinese);
 	string math = f2s::toString(juniorStudents::math);
 	string english = f2s::toString(juniorStudents::english);
 	string sum = f2s::toString(juniorStudents::sum);
 
-
+	// 实例化数据库类
 	MySQLInterface mysqlInterface;
+	// 连接数据库
 	mysqlInterface.connectMySQL("localhost", "root", "zyzzz", "student", 3306);
+	// 插入数据的SQL语句
 	std::string sql = "insert into junior (id, name, age, gender, grade, chinese, math, english, sum) values ('"+juniorStudents::id+"', '"+juniorStudents::name+"', '"+juniorStudents::age+"', '"+juniorStudents::gender+"', '"+juniorStudents::grade+"', '"+chinese+"', '"+math+"', '"+english+"', '"+sum+"');";
-
+	// 执行sql语句
 	mysqlInterface.writeDataToDB(sql);
-
+	// 关闭数据库连接
 	mysqlInterface.closeMySQL();
 
 }
@@ -135,13 +141,19 @@ void juniorStudents::find()
 	std::cout << "输入需要查找的学生学号或姓名：";
 	std::string f;
 	std::cin >> f;
+
 	MySQLInterface mysqlInterface;
 	mysqlInterface.connectMySQL("localhost", "root", "zyzzz", "student", 3306);
 
+	// 定义一个vector<vector<string> >变量data来存储查询的数据
 	std::vector<std::vector<std::string> > data;
+
 	std::string sql = "select * from junior where id = '"+f+"' or name = '"+f+"';";
 	mysqlInterface.getDatafromDB(sql, data);
+
 	std::cout << "|学号|\t\t" << "|姓名|\t\t" << "|年龄|\t\t" << "|性别|\t\t" << "|班级|\t\t" << "|语文|\t\t" << "|数学|\t\t" << "|英语|\t\t" << "|总分|" << std::endl;
+	
+	// 打印查询结果
 	for(int n=0; n<data.size(); n++)
 	{
 		for(int m=0; m<data[0].size(); m++ ) 
@@ -200,6 +212,7 @@ void juniorStudents::modify()
 	std::cin >> juniorStudents::english;
 
 	juniorStudents::sum = juniorStudents::chinese+juniorStudents::math+juniorStudents::english;
+
 	string chinese = f2s::toString(juniorStudents::chinese);
 	string math = f2s::toString(juniorStudents::math);
 	string english = f2s::toString(juniorStudents::english);

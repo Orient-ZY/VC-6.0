@@ -7,7 +7,8 @@ MySQLInterface::MySQLInterface():
     errorNum(0),errorInfo("ok")  
 {  
     mysql_library_init(0,NULL,NULL);  
-    mysql_init(&mysqlInstance);  
+    mysql_init(&mysqlInstance); 
+	// 数据库选项，设置gbk编码，显示中文
     mysql_options(&mysqlInstance,MYSQL_SET_CHARSET_NAME,"gbk");  
 }  
   
