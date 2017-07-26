@@ -1,0 +1,2 @@
+// 创建数据表的语句
+CREATE TABLE attendance (id int NOT NULL, name varchar(10) NOT NULL, gender char(1) NOT NULL, department varchar(10) NOT NULL, level varchar(10) NOT NULL, wage float(6.2) NOT NULL, payleave float(4.1) NOT NULL DEFAULT 0, sickleave float(4.1) NOT NULL DEFAULT 0, PRIMARY KEY(id)); 
